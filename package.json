@@ -1,0 +1,27 @@
+{
+  "name": "wdio-ts-docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "build": "npm tsc",
+    "test": "wdio run ./wdio.conf.ts",
+    "test:spec": "wdio run ./wdio.conf.js --spec",
+    "test:chrome": "",
+    "test:firefox": "",
+    "test:edge": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/cli": "^8.23.0",
+    "@wdio/local-runner": "^8.23.0",
+    "@wdio/mocha-framework": "^8.23.0",
+    "@wdio/spec-reporter": "^8.23.0",
+    "husky": "^8.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
