@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
+    "allure:generate": "allure generate allure-results -o allure-report --clean",
+    "allure:serve": "allure open allure-report",
     "build": "npm tsc",
+    "prepare": "husky install",
     "test": "wdio run ./wdio.conf.ts",
     "test:spec": "wdio run ./wdio.conf.js --spec",
     "test:chrome": "",
@@ -16,10 +18,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@wdio/allure-reporter": "^8.23.0",
     "@wdio/cli": "^8.23.0",
     "@wdio/local-runner": "^8.23.0",
     "@wdio/mocha-framework": "^8.23.0",
     "@wdio/spec-reporter": "^8.23.0",
+    "@wdio/types": "^8.23.0",
+    "allure-commandline": "^2.24.1",
     "husky": "^8.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
