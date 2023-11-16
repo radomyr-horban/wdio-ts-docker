@@ -1,5 +1,8 @@
-import type { Options } from '@wdio/types'
-export const config: Options.Testrunner = {
+import url from 'node:url'
+import path from 'node:path'
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
   //
   // ====================
   // Runner Configuration
@@ -30,7 +33,7 @@ export const config: Options.Testrunner = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ['./test/specs/**/*.ts'],
+  specs: ['../test/specs/**/*.ts'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -57,11 +60,7 @@ export const config: Options.Testrunner = {
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
-  capabilities: [
-    {
-      browserName: 'chrome',
-    },
-  ],
+  // capabilities: [{}],
 
   //
   // ===================
@@ -71,6 +70,7 @@ export const config: Options.Testrunner = {
   //
   // Level of logging verbosity: trace | debug | info | warn | error | silent
   logLevel: 'info',
+  outputDir: path.resolve(__dirname, 'logs'),
   //
   // Set specific log levels per logger
   // loggers:
@@ -94,7 +94,7 @@ export const config: Options.Testrunner = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: 'http://localhost',
+  baseUrl: 'http://the-internet.herokuapp.com',
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -133,8 +133,8 @@ export const config: Options.Testrunner = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  // reporters: ['spec'],
   reporters: [
+    'spec',
     [
       'allure',
       {

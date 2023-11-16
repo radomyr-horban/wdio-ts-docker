@@ -1,21 +1,27 @@
 {
   "compilerOptions": {
-    "types": ["node", "@wdio/globals/types", "@wdio/mocha-framework"],
-    /* Language and Environment */
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    /* Modules */
-    "module": "commonjs" /* Specify what module code is generated. */,
-    /* Emit */
-    "outDir": "./dist/" /* Specify an output folder for all emitted files. */,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "es2022",
 
-    /* Interop Constraints */
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "expect-webdriverio"
+    ],
 
-    /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
 
-    /* Completeness */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+
+    "isolatedModules": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowSyntheticDefaultImports": true
   }
 }
