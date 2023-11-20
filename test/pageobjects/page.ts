@@ -9,6 +9,11 @@ export default class Page {
     return $$(element)
   }
 
+  // public async getFirstElement(element: string) {
+  //   const elements = await this.getAllElements(element)
+  //   return elements[0]
+  // }
+
   // public async scrollElementIntoView(element: string): Promise<void> {
   //   const elem = await this.getElement(element)
   //   await elem.scrollIntoView()

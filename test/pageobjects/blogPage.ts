@@ -1,23 +1,15 @@
 import Page from './page.js'
 
 class BlogPage extends Page {
-  public async doesHeadingContainText(text: string): Promise<boolean> {
-    return await this.doesElementContainText('main h1', text)
-  }
-
-  public async isSubHeadingDisplayed(): Promise<boolean> {
-    return await this.isElementDisplayed('header h2 > span')
-  }
-
-  get filterDropdown() {
+  public get filterDropdown() {
     return this.getElement('#blog-filter')
   }
 
-  get filterDropdownList() {
+  public get filterDropdownList() {
     return this.getElement('div[role="listbox"]')
   }
 
-  get filterDropdownListOptions() {
+  public get filterDropdownListOptions() {
     return this.getElement('div[role="option"] a')
   }
 
@@ -32,25 +24,21 @@ class BlogPage extends Page {
     return await this.doesElementContainText('#articles h2', text)
   }
 
-  // get paginationNav() {
-  //   return this.getElement('nav[aria-label="pagination"]')
-  // }
+  public async isSubHeadingDisplayed(): Promise<boolean> {
+    return await this.isElementDisplayed('header h2 > span')
+  }
 
-  // get nextPageLinkTitle() {
-  //   return this.getElement('title[id="go-to-next-page"]')
-  // }
+  public async isFirstArticleCategoryDisplayed(): Promise<boolean> {
+    return this.isElementDisplayed('#articles ul li:first-child a strong')
+  }
 
-  // get firstArticleCategory() {
-  //   return this.getElement('#articles ul li:first-child  a strong')
-  // }
+  public async isFirstArticleTitleDisplayed(): Promise<boolean> {
+    return this.isElementDisplayed('#articles ul li:first-child a h3')
+  }
 
-  // get firstArticleTitle() {
-  //   return this.getElement('#articles ul li:first-child  a h3')
-  // }
-
-  // get firstArticleAuthor() {
-  //   return this.getElement('#articles ul li:first-child  a p')
-  // }
+  public async isFirstArticleAuthorDisplayed(): Promise<boolean> {
+    return this.isElementDisplayed('#articles ul li:first-child a p')
+  }
 
   public async clickOnFirstProductFilterOption(): Promise<void> {
     // await this.clickElement('a[href="/resources/topic/voice"]')
@@ -67,13 +55,12 @@ class BlogPage extends Page {
     // await this.clickElement('a[href="/resources/page/2#articles"]')
   }
 
-  //! article
   public async clickOnFirstArticle(): Promise<void> {
     await this.clickElement('#articles ul li:first-child a')
   }
 
-  public async clickOnLastArticle(): Promise<void> {
-    await this.clickElement('#articles ul li:last-child a')
+  public async doesHeadingContainText(text: string): Promise<boolean> {
+    return await this.doesElementContainText('main h1', text)
   }
 }
 

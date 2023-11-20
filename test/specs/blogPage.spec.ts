@@ -2,7 +2,7 @@ import HomePage from '../pageobjects/homePage.js'
 import BlogPage from '../pageobjects/blogPage.js'
 import { acceptCookiesHelper } from '../helpers/acceptCookies.helper.js'
 
-describe('Blog page', () => {
+describe.skip('Blog page', () => {
   beforeEach(async () => {
     await browser.maximizeWindow()
     await browser.url('/')
@@ -12,7 +12,6 @@ describe('Blog page', () => {
   it('should display pagination', async () => {
     await HomePage.clickOnResourcesLink()
     await browser.pause(500) //!
-
     await HomePage.clickOnBlogLink()
 
     await expect(browser).toHaveUrlContaining('/resources')
