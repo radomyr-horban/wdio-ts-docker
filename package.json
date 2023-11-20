@@ -7,7 +7,8 @@
   "scripts": {
     "allure:generate": "allure generate allure-results -o allure-report --clean",
     "allure:serve": "allure open allure-report",
-    "test:spec": "wdio run ./config/wdio.conf.chrome.ts -- --spec test/specs/",
+    "test": "wdio run ./config/wdio.conf.local.ts",
+    "test:spec": "wdio run ./config/wdio.conf.local.ts -- --spec test/specs/",
     "test:chrome": "wdio run ./config/wdio.conf.chrome.ts",
     "test:firefox": "wdio run ./config/wdio.conf.firefox.ts",
     "test:edge": "wdio run ./config/wdio.conf.edge.ts"

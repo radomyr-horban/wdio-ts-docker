@@ -7,9 +7,9 @@ export const config: WebdriverIO.Config = {
       {
         browserName: 'edge',
         // browserVersion: 'stable',
-        'ms:edgeOptions': {
-          args: ['headless'],
-        },
+        // 'ms:edgeOptions': {
+        //   args: ['headless'],
+        // },
       },
     ],
   },
