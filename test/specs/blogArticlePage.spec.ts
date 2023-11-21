@@ -2,13 +2,12 @@ import HomePage from '../pageobjects/homePage.js'
 import BlogPage from '../pageobjects/blogPage.js'
 import BlogArticlePage from '../pageobjects/blogArticlePage.js'
 
-import { acceptCookiesHelper } from '../helpers/acceptCookies.helper.js'
-
-describe.skip('Blog article page', () => {
+describe('Blog article page', () => {
   beforeEach(async () => {
     await browser.maximizeWindow()
     await browser.url('/')
-    await acceptCookiesHelper()
+    // await acceptCookiesHelper()
+    await HomePage.closeCookiesBox()
   })
 
   it('should display main elements', async () => {

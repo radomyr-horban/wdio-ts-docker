@@ -1,12 +1,12 @@
 import HomePage from '../pageobjects/homePage.js'
 import BlogPage from '../pageobjects/blogPage.js'
-import { acceptCookiesHelper } from '../helpers/acceptCookies.helper.js'
 
-describe.skip('Blog page', () => {
+describe('Blog page', () => {
   beforeEach(async () => {
     await browser.maximizeWindow()
     await browser.url('/')
-    await acceptCookiesHelper()
+    // await acceptCookiesHelper()
+    await HomePage.closeCookiesBox()
   })
 
   it('should display pagination', async () => {
