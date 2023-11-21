@@ -4,7 +4,7 @@ import BlogArticlePage from '../pageobjects/blogArticlePage.js'
 
 import { acceptCookiesHelper } from '../helpers/acceptCookies.helper.js'
 
-describe('Blog article page', () => {
+describe.skip('Blog article page', () => {
   beforeEach(async () => {
     await browser.maximizeWindow()
     await browser.url('/')

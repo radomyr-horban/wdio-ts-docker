@@ -11,3 +11,5 @@ node_modules/
 # allure files
 allure-results/
 allure-report/
+
+*.js

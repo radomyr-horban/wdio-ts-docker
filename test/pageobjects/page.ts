@@ -59,11 +59,16 @@ export default class Page {
 
   public async setElementInputValue(
     element: string,
-    value: number
+    value: string | number
   ): Promise<void> {
     await this.waitUntilElementDisplayed(element)
     const elem = await this.getElement(element)
     await elem.setValue(value)
+  }
+  public async clearElementInputValue(element: string): Promise<void> {
+    await this.waitUntilElementDisplayed(element)
+    const elem = await this.getElement(element)
+    await elem.clearValue()
   }
 
   public async clickElement(element: string): Promise<void> {

@@ -20,7 +20,7 @@ class HomePage extends Page {
     await this.clickElement('//nav//span[text()="Why Telnyx"]')
   }
 
-  async clickOnProductsLinkLink(): Promise<void> {
+  async clickOnProductsLink(): Promise<void> {
     await this.clickElement('//nav//span[text()="Products"]')
   }
 
