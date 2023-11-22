@@ -8,13 +8,13 @@ interface UserData {
 }
 
 export default class Page {
-  public async getElement(element: string): Promise<WebdriverIO.Element> {
-    return $(element)
-  }
+  // public async getElement(element: string): Promise<WebdriverIO.Element> {
+  //   return $(element)
+  // }
 
-  public async getAllElements(element: string) {
-    return $$(element)
-  }
+  // public async getAllElements(element: string) {
+  //   return $$(element)
+  // }
 
   // public async getFirstElement(element: string) {
   //   const elements = await this.getAllElements(element)
@@ -26,80 +26,77 @@ export default class Page {
   //   await elem.scrollIntoView()
   // }
 
-  public async getListSize(element: string): Promise<number> {
-    const elements = await this.getAllElements(element)
+  // public async getListSize(element: string): Promise<number> {
+  //   const elements = await this.getAllElements(element)
 
-    if (elements && elements.length > 0) {
-      return elements.length
-    } else {
-      throw new Error('No elements found with the specified selector.')
-    }
-  }
+  //   if (elements && elements.length > 0) {
+  //     return elements.length
+  //   } else {
+  //     throw new Error('No elements found with the specified selector.')
+  //   }
+  // }
 
-  public async isElementDisplayed(element: string): Promise<boolean> {
-    const elem = await this.getElement(element)
-    return elem.isDisplayed()
-  }
+  // public async isElementDisplayed(element: string): Promise<boolean> {
+  //   const elem = await this.getElement(element)
+  //   return elem.isDisplayed()
+  // }
 
-  public async isElementClickable(element: string): Promise<boolean> {
-    const elem = await this.getElement(element)
-    return elem.isClickable()
-  }
+  // public async isElementClickable(element: string): Promise<boolean> {
+  //   const elem = await this.getElement(element)
+  //   return elem.isClickable()
+  // }
 
-  public async isElementSelected(element: string): Promise<boolean> {
-    const elem = await this.getElement(element)
-    return elem.isSelected()
-  }
+  // public async isElementSelected(element: string): Promise<boolean> {
+  //   const elem = await this.getElement(element)
+  //   return elem.isSelected()
+  // }
 
-  public async waitUntilElementDisplayed(element: string): Promise<void> {
-    await browser.waitUntil(() => {
-      return this.isElementDisplayed(element)
-    })
-  }
+  // public async waitUntilElementDisplayed(element: string): Promise<void> {
+  //   await browser.waitUntil(() => {
+  //     return this.isElementDisplayed(element)
+  //   })
+  // }
 
-  public async getElementText(element: string): Promise<string> {
-    await this.waitUntilElementDisplayed(element)
-    const elem = await this.getElement(element)
+  // public async getElementText(element: string): Promise<string> {
+  //   await this.waitUntilElementDisplayed(element)
+  //   const elem = await this.getElement(element)
 
-    return elem.getText()
-  }
+  //   return elem.getText()
+  // }
 
-  public async setElementInputValue(
-    element: string,
-    value: string | number
+  // public async setElementInputValue(
+  //   element: string,
+  //   value: string | number
+  // ): Promise<void> {
+  //   await this.waitUntilElementDisplayed(element)
+  //   const elem = await this.getElement(element)
+  //   await elem.setValue(value)
+  // }
+  // public async clearElementInputValue(element: string): Promise<void> {
+  //   await this.waitUntilElementDisplayed(element)
+  //   const elem = await this.getElement(element)
+  //   await elem.clearValue()
+  // }
+
+  // public async doesElementContainText(
+  //   element: string,
+  //   text: string
+  // ): Promise<boolean> {
+  //   const elementText = await this.getElementText(element)
+  //   return elementText.includes(text)
+  // }
+
+  public async clickElement(
+    element: Promise<WebdriverIO.Element>
   ): Promise<void> {
-    await this.waitUntilElementDisplayed(element)
-    const elem = await this.getElement(element)
-    await elem.setValue(value)
-  }
-  public async clearElementInputValue(element: string): Promise<void> {
-    await this.waitUntilElementDisplayed(element)
-    const elem = await this.getElement(element)
-    await elem.clearValue()
-  }
+    await (await element).waitForClickable()
 
-  public async clickElement(element: string): Promise<void> {
-    const elem = await this.getElement(element)
-
-    await elem.waitForClickable()
-
-    await elem.click()
-  }
-
-  public async doesElementContainText(
-    element: string,
-    text: string
-  ): Promise<boolean> {
-    const elementText = await this.getElementText(element)
-    return elementText.includes(text)
+    await (await element).click()
   }
 
   //todo: helpers
   public async closeCookiesBox(): Promise<void> {
-    // const acceptCookiesButton = await $('div#onetrust-close-btn-container')
-    const closeCookiesBoxButton = await this.getElement(
-      'div#onetrust-close-btn-container'
-    )
+    const closeCookiesBoxButton = await $('div#onetrust-close-btn-container')
 
     if (closeCookiesBoxButton && (await closeCookiesBoxButton.isDisplayed())) {
       await closeCookiesBoxButton.click()

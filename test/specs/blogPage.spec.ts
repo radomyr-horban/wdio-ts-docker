@@ -3,9 +3,9 @@ import BlogPage from '../pageobjects/blogPage.js'
 
 describe('Blog page', () => {
   beforeEach(async () => {
-    await browser.maximizeWindow()
+    // await browser.maximizeWindow()
+    await browser.setWindowSize(1440, 800)
     await browser.url('/')
-    // await acceptCookiesHelper()
     await HomePage.closeCookiesBox()
   })
 
@@ -13,41 +13,33 @@ describe('Blog page', () => {
     await HomePage.clickOnResourcesLink()
     await browser.pause(500) //!
     await HomePage.clickOnBlogLink()
-
     await expect(browser).toHaveUrlContaining('/resources')
-    await expect(
-      BlogPage.doesHeadingContainText('Browse all articles, guides, and news')
-    ).toBeTruthy()
-    await expect(BlogPage.isSearchInputDisplayed).toBeTruthy()
-    await expect(
-      BlogPage.doesArticlesSectionHeadingContainText('View all articles')
-    ).toBeTruthy()
-
+    await expect(BlogPage.heading).toHaveTextContaining(
+      'Browse all articles, guides, and news'
+    )
+    await expect(BlogPage.searchInput).toBeDisplayed()
+    await expect(BlogPage.articlesSectionHeading).toHaveTextContaining(
+      'View all articles'
+    )
     await BlogPage.clickOnNextPageBtn()
-
     await expect(browser).toHaveUrlContaining('/page/2')
-    await expect(
-      BlogPage.doesArticlesSectionHeadingContainText('(2)')
-    ).toBeTruthy()
+    await expect(BlogPage.articlesSectionHeading).toHaveTextContaining('(2)')
   })
 
   it('should allow a user to sort articles', async () => {
     await HomePage.clickOnResourcesLink()
     await browser.pause(500) //!
     await HomePage.clickOnBlogLink()
-
     await expect(browser).toHaveUrlContaining('/resources')
-    await expect(
-      BlogPage.doesHeadingContainText('Browse all articles, guides, and news')
-    ).toBeTruthy()
-    await expect(BlogPage.isSearchInputDisplayed).toBeTruthy()
-    await expect(
-      BlogPage.doesArticlesSectionHeadingContainText('View all articles')
-    ).toBeTruthy()
-
+    await expect(BlogPage.heading).toHaveTextContaining(
+      'Browse all articles, guides, and news'
+    )
+    await expect(BlogPage.searchInput).toBeDisplayed()
+    await expect(BlogPage.articlesSectionHeading).toHaveTextContaining(
+      'View all articles'
+    )
     await BlogPage.clickOnFirstProductFilterOption()
     await expect(browser).toHaveUrlContaining('topic/voice')
-
     await BlogPage.clickOnFirstContentTypeFilterOption()
     await expect(browser).toHaveUrlContaining('category=partnerships')
   })

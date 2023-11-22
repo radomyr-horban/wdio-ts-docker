@@ -4,42 +4,37 @@ import BlogArticlePage from '../pageobjects/blogArticlePage.js'
 
 describe('Blog article page', () => {
   beforeEach(async () => {
-    await browser.maximizeWindow()
+    // await browser.maximizeWindow()
+    await browser.setWindowSize(1440, 800)
+
     await browser.url('/')
-    // await acceptCookiesHelper()
     await HomePage.closeCookiesBox()
   })
 
   it('should display main elements', async () => {
     await HomePage.clickOnResourcesLink()
     await HomePage.clickOnBlogLink()
-
     await expect(browser).toHaveUrlContaining('/resources')
     await expect(browser).toHaveUrlContaining('/resources')
-    await expect(
-      BlogPage.doesHeadingContainText('Browse all articles, guides, and news')
-    ).toBeTruthy()
-    await expect(BlogPage.isSearchInputDisplayed).toBeTruthy()
-    await expect(
-      BlogPage.doesArticlesSectionHeadingContainText('View all articles')
-    ).toBeTruthy()
+    await expect(BlogPage.heading).toHaveTextContaining(
+      'Browse all articles, guides, and news'
+    )
+    await expect(BlogPage.searchInput).toBeDisplayed()
+    await expect(BlogPage.articlesSectionHeading).toHaveTextContaining(
+      'View all articles'
+    )
 
     //! article
-    await expect(BlogPage.isFirstArticleCategoryDisplayed()).toBeTruthy()
-    await expect(BlogPage.isFirstArticleTitleDisplayed()).toBeTruthy()
-    await expect(BlogPage.isFirstArticleAuthorDisplayed()).toBeTruthy()
-
+    await expect(BlogPage.firstArticleCategory).toBeDisplayed()
+    await expect(BlogPage.firstArticleTitle).toBeDisplayed()
+    await expect(BlogPage.firstArticleAuthor).toBeDisplayed()
     await BlogPage.clickOnFirstArticle()
 
     //! inside
-    await expect(BlogArticlePage.isBackToBlogLinkDisplayed()).toBeTruthy()
-
-    await expect(
-      BlogArticlePage.isCategoryAndLastUpdateDateDisplayed()
-    ).toBeTruthy()
-
-    await expect(BlogArticlePage.isHeadingDisplayed()).toBeTruthy()
-    await expect(BlogArticlePage.isAuthorNameDisplayed()).toBeTruthy()
-    await expect(BlogArticlePage.isShareOnSocialTextDisplayed()).toBeTruthy()
+    await expect(BlogArticlePage.backToBlogLink).toBeDisplayed()
+    await expect(BlogArticlePage.categoryAndLastUpdateDate).toBeDisplayed()
+    await expect(BlogArticlePage.heading).toBeDisplayed()
+    await expect(BlogArticlePage.authorName).toBeDisplayed()
+    await expect(BlogArticlePage.shareOnSocialText).toBeDisplayed()
   })
 })

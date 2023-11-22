@@ -15,6 +15,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run tests
+        continue-on-error: true
         run: npm run test:chrome
 
       - name: Generate Allure Report

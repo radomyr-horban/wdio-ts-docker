@@ -1,66 +1,94 @@
 import Page from './page.js'
+import { $ } from '@wdio/globals'
 
 class BlogPage extends Page {
-  public get filterDropdown() {
-    return this.getElement('#blog-filter')
+  get heading() {
+    return $('main h1')
   }
 
-  public get filterDropdownList() {
-    return this.getElement('div[role="listbox"]')
+  get subHeading() {
+    return $('header h2 > span')
   }
 
-  public get filterDropdownListOptions() {
-    return this.getElement('div[role="option"] a')
+  get filterDropdown() {
+    return $('#blog-filter')
   }
 
-  //! methods
-  public async isSearchInputDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('input#search')
+  get filterDropdownList() {
+    return $('div[role="listbox"]')
   }
 
-  public async doesArticlesSectionHeadingContainText(
-    text: string
-  ): Promise<boolean> {
-    return await this.doesElementContainText('#articles h2', text)
+  get filterDropdownListOptions() {
+    return $('div[role="option"] a')
   }
 
-  public async isSubHeadingDisplayed(): Promise<boolean> {
-    return await this.isElementDisplayed('header h2 > span')
+  get searchInput() {
+    return $('input[id="search"]')
   }
 
-  public async isFirstArticleCategoryDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('#articles ul li:first-child a strong')
+  get articlesSectionHeading() {
+    return $('#articles h2')
   }
 
-  public async isFirstArticleTitleDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('#articles ul li:first-child a h3')
+  get paginationNav() {
+    return $('nav[aria-label="pagination"]')
   }
 
-  public async isFirstArticleAuthorDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('#articles ul li:first-child a p')
+  get nextPageLink() {
+    return $('svg[aria-describedby="go-to-next-page"]')
+  }
+
+  get nextPageLinkTitle() {
+    return $('title[id="go-to-next-page"]')
+  }
+
+  //! article
+  // get firstArticle() {
+  //   return $('#articles ul li a').first()
+  // }
+
+  get firstArticleCategory() {
+    return $('#articles ul li:first-child a strong')
+  }
+
+  get firstArticleTitle() {
+    return $('#articles ul li:first-child a h3')
+  }
+
+  get firstArticleAuthor() {
+    return $('#articles ul li:first-child a p')
+  }
+
+  get firstProductFilterOption() {
+    return $('[id="articles"] > div > div > div:first-child a')
   }
 
   public async clickOnFirstProductFilterOption(): Promise<void> {
-    // await this.clickElement('a[href="/resources/topic/voice"]')
-    await this.clickElement('[id="articles"] > div > div > div:first-child a')
+    await this.clickElement(this.firstProductFilterOption)
+  }
+
+  get firstContentTypeFilterOption() {
+    return $('[id="articles"] > div > div > div:last-child a')
   }
 
   public async clickOnFirstContentTypeFilterOption(): Promise<void> {
-    // await this.clickElement('a[href="//resources/topic/voice?category=partnerships"]')
-    await this.clickElement('[id="articles"] > div > div > div:last-child a')
+    await this.clickElement(this.firstContentTypeFilterOption)
+  }
+
+  get nextPageBtn() {
+    return $('svg[aria-describedby="go-to-next-page"]')
   }
 
   public async clickOnNextPageBtn(): Promise<void> {
-    await this.clickElement('svg[aria-describedby="go-to-next-page"]')
-    // await this.clickElement('a[href="/resources/page/2#articles"]')
+    await this.clickElement(this.nextPageBtn)
+  }
+
+  get firstArticleLink() {
+    return $('#articles ul li:first-child a')
   }
 
   public async clickOnFirstArticle(): Promise<void> {
-    await this.clickElement('#articles ul li:first-child a')
-  }
-
-  public async doesHeadingContainText(text: string): Promise<boolean> {
-    return await this.doesElementContainText('main h1', text)
+    await this.clickElement(this.firstArticleLink)
   }
 }
 

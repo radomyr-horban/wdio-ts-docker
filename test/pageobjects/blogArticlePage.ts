@@ -1,29 +1,20 @@
 import Page from './page.js'
 
 class BlogArticlePage extends Page {
-  public async isElementDisplayed(selector: string): Promise<boolean> {
-    const element = await this.getElement(selector)
-    return element.isDisplayed()
+  public get backToBlogLink() {
+    return $('main a[href="/resources"]')
   }
-
-  public async isBackToBlogLinkDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('main a[href="/resources"]')
+  public get categoryAndLastUpdateDate() {
+    return $('main>div:first-child strong')
   }
-
-  public async isCategoryAndLastUpdateDateDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('main>div:first-child strong')
+  public get heading() {
+    return $('main h1')
   }
-
-  public async isHeadingDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('main h1')
+  public get authorName() {
+    return $('div [data-author-initials]+p')
   }
-
-  public async isAuthorNameDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('div [data-author-initials]+p')
-  }
-
-  public async isShareOnSocialTextDisplayed(): Promise<boolean> {
-    return this.isElementDisplayed('//span[text()="Share on Social"]')
+  public get shareOnSocialText() {
+    return $('//span[text()="Share on Social"]')
   }
 }
 
