@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Wed Nov 22 20:28:31 GMT 2023","Wed Nov 22 20:28:41 GMT 2023","10568","","Blog page","","","","should allow a user to sort articles",""
+"passed","Wed Nov 22 20:28:31 GMT 2023","Wed Nov 22 20:28:31 GMT 2023","325","","Blog page","","","","""before each"" hook for Blog page",""
+"broken","Wed Nov 22 20:28:18 GMT 2023","Wed Nov 22 20:28:31 GMT 2023","12238","","Blog article page","","","","should display main elements",""
+"broken","Wed Nov 22 20:28:18 GMT 2023","Wed Nov 22 20:28:31 GMT 2023","12497","","Blog page","","","","should display pagination",""
+"passed","Wed Nov 22 20:28:18 GMT 2023","Wed Nov 22 20:28:21 GMT 2023","2194","","Blog article page","","","","""before each"" hook for Blog article page",""
