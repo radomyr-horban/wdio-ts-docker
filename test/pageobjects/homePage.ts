@@ -8,7 +8,7 @@ class HomePage extends Page {
   }
 
   async clickOnResourcesLink(): Promise<void> {
-    await this.clickElement(this.resourcesLink)
+    await this.clickElement(await this.resourcesLink)
   }
 
   get solutionsLink() {
@@ -16,7 +16,7 @@ class HomePage extends Page {
   }
 
   async clickOnSolutionsLink(): Promise<void> {
-    await this.clickElement(this.solutionsLink)
+    await this.clickElement(await this.solutionsLink)
   }
 
   get pricingLink() {
@@ -24,7 +24,7 @@ class HomePage extends Page {
   }
 
   async clickOnPricingLink(): Promise<void> {
-    await this.clickElement(this.pricingLink)
+    await this.clickElement(await this.pricingLink)
   }
 
   get whyTelnyxLink() {
@@ -32,7 +32,7 @@ class HomePage extends Page {
   }
 
   async clickOnWhyTelnyxLink(): Promise<void> {
-    await this.clickElement(this.whyTelnyxLink)
+    await this.clickElement(await this.whyTelnyxLink)
   }
 
   get productsLink() {
@@ -40,7 +40,7 @@ class HomePage extends Page {
   }
 
   async clickOnProductsLink(): Promise<void> {
-    await this.clickElement(this.productsLink)
+    await this.clickElement(await this.productsLink)
   }
 
   //! Sub-navigation
@@ -49,7 +49,7 @@ class HomePage extends Page {
   }
 
   async clickOnSupportCenterLink(): Promise<void> {
-    await this.clickElement(this.supportCenterLink)
+    await this.clickElement(await this.supportCenterLink)
   }
 
   get blogLink() {
@@ -57,7 +57,7 @@ class HomePage extends Page {
   }
 
   async clickOnBlogLink(): Promise<void> {
-    await this.clickElement(this.blogLink)
+    await this.clickElement(await this.blogLink)
   }
 
   get globalNumbersLink() {
@@ -65,7 +65,7 @@ class HomePage extends Page {
   }
 
   async clickOnGlobalNumbersLink(): Promise<void> {
-    await this.clickElement(this.globalNumbersLink)
+    await this.clickElement(await this.globalNumbersLink)
   }
 
   get globalCoverageLink() {
@@ -73,7 +73,7 @@ class HomePage extends Page {
   }
 
   async clickOnGlobalCoverageLink(): Promise<void> {
-    await this.clickElement(this.globalCoverageLink)
+    await this.clickElement(await this.globalCoverageLink)
   }
 
   get integrationsLink() {
@@ -81,7 +81,7 @@ class HomePage extends Page {
   }
 
   async clickOnIntegrationsLink(): Promise<void> {
-    await this.clickElement(this.integrationsLink)
+    await this.clickElement(await this.integrationsLink)
   }
 
   get microsoftTeamsLink() {
@@ -89,7 +89,7 @@ class HomePage extends Page {
   }
 
   async clickOnMicrosoftTeamsLink(): Promise<void> {
-    await this.clickElement(this.microsoftTeamsLink)
+    await this.clickElement(await this.microsoftTeamsLink)
   }
 
   get ioTSimCardsLink() {
@@ -97,7 +97,7 @@ class HomePage extends Page {
   }
 
   async clickOnIoTSimCardsLink(): Promise<void> {
-    await this.clickElement(this.ioTSimCardsLink)
+    await this.clickElement(await this.ioTSimCardsLink)
   }
 
   //! Footer
@@ -106,7 +106,7 @@ class HomePage extends Page {
   }
 
   async clickOnReleaseNotesLink(): Promise<void> {
-    await this.clickElement(this.releaseNotesLink)
+    await this.clickElement(await this.releaseNotesLink)
   }
 
   get telnyxVsTwilioLink() {
@@ -114,7 +114,7 @@ class HomePage extends Page {
   }
 
   async clickOnTelnyxVsTwilioLink(): Promise<void> {
-    await this.clickElement(this.telnyxVsTwilioLink)
+    await this.clickElement(await this.telnyxVsTwilioLink)
   }
 }
 

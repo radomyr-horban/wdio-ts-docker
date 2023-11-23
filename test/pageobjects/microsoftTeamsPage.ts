@@ -1,11 +1,6 @@
 import Page from './page.js'
 
-interface UserData {
-  firstName: string
-  lastName: string
-  email: string
-  website: string
-}
+import { UserData } from '../types'
 
 class MicrosoftTeamsPage extends Page {
   public get heroOverviewText() {
@@ -64,16 +59,11 @@ class MicrosoftTeamsPage extends Page {
     return $('button[type="submit"]')
   }
 
-  async isErrorAlertDisplayed(inputField: WebdriverIO.Element): Promise<boolean> {
-    const inputId = await inputField.getAttribute('id')
-    return (await $(`input[id="${inputId}"]+div.mktoError`)).isDisplayed()
-  }
-
-  async selectOperator(value: string) {
+  public async selectOperator(value: string) {
     await (await this.operatorSelect).selectByVisibleText(value)
   }
 
-  async fillForm(userData: UserData) {
+  public async fillForm(userData: UserData) {
     await this.firstNameInput.setValue(userData.firstName)
     await this.lastNameInput.setValue(userData.lastName)
     await this.emailInput.setValue(userData.email)

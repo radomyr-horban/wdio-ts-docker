@@ -1,17 +1,9 @@
-// import { browser, $ } from '@wdio/globals'
-
-interface UserData {
-  firstName: string
-  lastName: string
-  email: string
-  website: string
-}
+import { UserData } from '../types'
 
 export default class Page {
-  public async clickElement(element: Promise<WebdriverIO.Element>): Promise<void> {
-    await (await element).waitForClickable()
-
-    await (await element).click()
+  public async clickElement(element: WebdriverIO.Element): Promise<void> {
+    await element.waitForClickable()
+    await element.click()
   }
 
   public async closeCookiesBox(): Promise<void> {
@@ -44,5 +36,10 @@ export default class Page {
       email: randomEmail,
       website: randomWebsite,
     }
+  }
+
+  public async isErrorAlertDisplayed(inputField: WebdriverIO.Element): Promise<boolean> {
+    const inputId = await inputField.getAttribute('id')
+    return (await $(`input[id="${inputId}"]+div.mktoError`)).isDisplayed()
   }
 }

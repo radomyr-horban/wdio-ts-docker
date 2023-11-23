@@ -43,10 +43,6 @@ class BlogPage extends Page {
   }
 
   //! article
-  // get firstArticle() {
-  //   return $('#articles ul li a').first()
-  // }
-
   get firstArticleCategory() {
     return $('#articles ul li:first-child a strong')
   }
@@ -64,7 +60,7 @@ class BlogPage extends Page {
   }
 
   public async clickOnFirstProductFilterOption(): Promise<void> {
-    await this.clickElement(this.firstProductFilterOption)
+    await this.clickElement(await this.firstProductFilterOption)
   }
 
   get firstContentTypeFilterOption() {
@@ -72,7 +68,7 @@ class BlogPage extends Page {
   }
 
   public async clickOnFirstContentTypeFilterOption(): Promise<void> {
-    await this.clickElement(this.firstContentTypeFilterOption)
+    await this.clickElement(await this.firstContentTypeFilterOption)
   }
 
   get nextPageBtn() {
@@ -80,7 +76,7 @@ class BlogPage extends Page {
   }
 
   public async clickOnNextPageBtn(): Promise<void> {
-    await this.clickElement(this.nextPageBtn)
+    await this.clickElement(await this.nextPageBtn)
   }
 
   get firstArticleLink() {
@@ -88,7 +84,7 @@ class BlogPage extends Page {
   }
 
   public async clickOnFirstArticle(): Promise<void> {
-    await this.clickElement(this.firstArticleLink)
+    await this.clickElement(await this.firstArticleLink)
   }
 }
 
