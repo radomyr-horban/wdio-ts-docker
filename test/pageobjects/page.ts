@@ -42,4 +42,30 @@ export default class Page {
     const inputId = await inputField.getAttribute('id')
     return (await $(`input[id="${inputId}"]+div.mktoError`)).isDisplayed()
   }
+
+  //! Commands
+  public async verifyListItemsHrefs(
+    elementsArray: WebdriverIO.ElementArray,
+    hrefObject: Record<string, string>
+  ): Promise<void> {
+    expect(elementsArray.length).toBe(Object.keys(hrefObject).length)
+
+    for (const li of elementsArray) {
+      const title = await li.getText()
+      const expectedHref = hrefObject[title]
+      const actualHref = await li.getAttribute('href')
+      expect(actualHref).toBe(expectedHref)
+    }
+  }
+
+  public async verifyListItemsTitles(
+    elementsArray: WebdriverIO.ElementArray,
+    titlesObject: Record<string, string>
+  ): Promise<void> {
+    expect(elementsArray.length).toBe(Object.keys(titlesObject).length)
+    for (let i = 0; i < elementsArray.length; i++) {
+      const title = await elementsArray[i].getText()
+      expect(Object.keys(titlesObject)).toContain(title.trim())
+    }
+  }
 }

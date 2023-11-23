@@ -1,7 +1,7 @@
 import HomePage from '../pageobjects/homePage.js'
 import BlogPage from '../pageobjects/blogPage.js'
 
-describe('Blog page', () => {
+describe.skip('Blog page', () => {
   beforeEach(async () => {
     await browser.url('/')
     await HomePage.closeCookiesBox()

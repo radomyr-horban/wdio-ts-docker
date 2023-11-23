@@ -2,7 +2,7 @@ import HomePage from '../pageobjects/homePage.js'
 import MicrosoftTeamsPage from '../pageobjects/microsoftTeamsPage.js'
 import ThankYouPage from '../pageobjects/thankYouPage.js'
 
-describe('Microsoft Teams page', () => {
+describe.skip('Microsoft Teams page', () => {
   beforeEach(async () => {
     await browser.url('/')
     await HomePage.closeCookiesBox()

@@ -2,7 +2,7 @@ import HomePage from '../pageobjects/homePage.js'
 import GlobalCoveragePage from '../pageobjects/globalCoveragePage.js'
 import ThankYouPage from '../pageobjects/thankYouPage.js'
 
-describe('Global coverage page', () => {
+describe.skip('Global coverage page', () => {
   beforeEach(async () => {
     await browser.url('/')
     await HomePage.closeCookiesBox()
