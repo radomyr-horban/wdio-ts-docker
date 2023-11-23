@@ -85,9 +85,7 @@ class HomePage extends Page {
   }
 
   get microsoftTeamsLink() {
-    return $(
-      '[role="menuitem"] > a[href="/products/enterprise-integrations-ms-teams"]'
-    )
+    return $('[role="menuitem"] > a[href="/products/enterprise-integrations-ms-teams"]')
   }
 
   async clickOnMicrosoftTeamsLink(): Promise<void> {

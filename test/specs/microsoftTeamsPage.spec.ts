@@ -1,130 +1,68 @@
-// import HomePage from '../pageobjects/homePage.js'
-// import MicrosoftTeamsPage from '../pageobjects/microsoftTeamsPage.js'
-// import ThankYouPage from '../pageobjects/thankYouPage.js'
+import HomePage from '../pageobjects/homePage.js'
+import MicrosoftTeamsPage from '../pageobjects/microsoftTeamsPage.js'
+import ThankYouPage from '../pageobjects/thankYouPage.js'
 
-// describe('Microsoft Teams page', () => {
-//   beforeEach(async () => {
-//     await browser.maximizeWindow()
-//     await browser.url('/')
-//
-//     await HomePage.closeCookiesBox()
-//   })
+describe('Microsoft Teams page', () => {
+  beforeEach(async () => {
+    await browser.url('/')
+    await HomePage.closeCookiesBox()
+  })
 
-//   it('should allow a user to submit a form with valid data', async () => {
-//     await HomePage.clickOnProductsLink()
-//     await HomePage.clickOnMicrosoftTeamsLink()
+  it('should allow a user to submit a form with valid data', async () => {
+    await HomePage.clickOnProductsLink()
+    await HomePage.clickOnMicrosoftTeamsLink()
 
-//     await expect(browser).toHaveUrlContaining(
-//       '/products/enterprise-integrations-ms-teams'
-//     )
+    await expect(browser).toHaveUrlContaining('/products/enterprise-integrations-ms-teams')
+    await expect(await MicrosoftTeamsPage.heading).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.heading).toHaveTextContaining('Microsoft Teams')
+    await expect(await MicrosoftTeamsPage.heroOverviewText).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.talkToExpertBtn).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.getStartedLink).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formSectionHeading).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formSectionDescription).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formBox).toBeDisplayed()
 
-//     await expect(await MicrosoftTeamsPage.isHeadingDisplayed()).toBe(true)
+    const userData = await HomePage.generateUserData()
+    await MicrosoftTeamsPage.fillForm(userData)
+    await expect(browser).toHaveUrlContaining('/thank-you?formId')
+    await expect(await ThankYouPage.heading).toBeDisplayed()
+    await expect(await ThankYouPage.heroOverviewText).toBeDisplayed()
+  })
 
-//     await expect(
-//       await MicrosoftTeamsPage.doesHeadingContainText('Microsoft Teams')
-//     ).toBe(true)
+  it('should NOT allow a user to submit a form with invalid data', async () => {
+    await HomePage.clickOnProductsLink()
+    await HomePage.clickOnMicrosoftTeamsLink()
 
-//     await expect(await MicrosoftTeamsPage.isHeroOverviewTextDisplayed()).toBe(
-//       true
-//     )
-//     await expect(await MicrosoftTeamsPage.isTalkToExpertBtnDisplayed()).toBe(
-//       true
-//     )
-//     await expect(await MicrosoftTeamsPage.isGetStartedLinkDisplayed()).toBe(
-//       true
-//     )
+    await expect(await browser).toHaveUrlContaining('/products/enterprise-integrations-ms-teams')
+    await expect(await MicrosoftTeamsPage.heading).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.heading).toHaveTextContaining('Microsoft Teams')
+    await expect(await MicrosoftTeamsPage.heroOverviewText).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.talkToExpertBtn).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.getStartedLink).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formSectionHeading).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formSectionDescription).toBeDisplayed()
+    await expect(await MicrosoftTeamsPage.formBox).toBeDisplayed()
 
-//     await expect(await MicrosoftTeamsPage.isFormSectionHeadingDisplayed()).toBe(
-//       true
-//     )
-//     await expect(
-//       await MicrosoftTeamsPage.isFormSectionDescriptionDisplayed()
-//     ).toBe(true)
-//     await expect(await MicrosoftTeamsPage.isFormBoxDisplayed()).toBe(true)
+    await MicrosoftTeamsPage.submitBtn.click()
+    await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.firstNameInput))
 
-//     const userData = await HomePage.generateUserData()
-//     await MicrosoftTeamsPage.fillForm(userData)
+    await MicrosoftTeamsPage.firstNameInput.setValue('Tom')
+    await MicrosoftTeamsPage.submitBtn.click()
+    await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.lastNameInput))
 
-//     await expect(browser).toHaveUrlContaining('/thank-you?formId')
+    await MicrosoftTeamsPage.lastNameInput.setValue('Holland')
+    await MicrosoftTeamsPage.submitBtn.click()
+    await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))
 
-//     await expect(await ThankYouPage.isHeadingDisplayed()).toBe(true)
-//     await expect(await ThankYouPage.isHeroOverviewTextDisplayed()).toBe(true)
-//   })
+    await MicrosoftTeamsPage.emailInput.setValue('tom.holland')
+    await MicrosoftTeamsPage.selectOperator('0-50')
+    await MicrosoftTeamsPage.submitBtn.click()
+    await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))
 
-//   it('should NOT allow a user to submit a form with invalid data', async () => {
-//     await HomePage.clickOnProductsLink()
-//     await HomePage.clickOnMicrosoftTeamsLink()
-
-//     await expect(await browser).toHaveUrlContaining(
-//       '/products/enterprise-integrations-ms-teams'
-//     )
-
-//     await expect(await MicrosoftTeamsPage.isHeadingDisplayed()).toBe(true)
-
-//     await expect(
-//       await MicrosoftTeamsPage.doesHeadingContainText('Microsoft Teams')
-//     ).toBe(true)
-
-//     await expect(await MicrosoftTeamsPage.isHeroOverviewTextDisplayed()).toBe(
-//       true
-//     )
-//     await expect(await MicrosoftTeamsPage.isTalkToExpertBtnDisplayed()).toBe(
-//       true
-//     )
-//     await expect(await MicrosoftTeamsPage.isGetStartedLinkDisplayed()).toBe(
-//       true
-//     )
-
-//     await expect(await MicrosoftTeamsPage.isFormSectionHeadingDisplayed()).toBe(
-//       true
-//     )
-//     await expect(
-//       await MicrosoftTeamsPage.isFormSectionDescriptionDisplayed()
-//     ).toBe(true)
-//     await expect(await MicrosoftTeamsPage.isFormBoxDisplayed()).toBe(true)
-
-//     await MicrosoftTeamsPage.clickOnSubmitBtn()
-//     await expect(
-//       await MicrosoftTeamsPage.isErrorAlertDisplayed(
-//         await MicrosoftTeamsPage.firstNameInput
-//       )
-//     ).toBe(true)
-
-//     await MicrosoftTeamsPage.setFirstNameInput('Tom')
-//     await MicrosoftTeamsPage.clickOnSubmitBtn()
-//     await expect(
-//       await MicrosoftTeamsPage.isErrorAlertDisplayed(
-//         await MicrosoftTeamsPage.lastNameInput
-//       )
-//     ).toBe(true)
-
-//     await MicrosoftTeamsPage.setLastNameInput('Holland')
-//     await MicrosoftTeamsPage.clickOnSubmitBtn()
-//     expect(
-//       await MicrosoftTeamsPage.isErrorAlertDisplayed(
-//         await MicrosoftTeamsPage.emailInput
-//       )
-//     ).toBe(true)
-
-//     await MicrosoftTeamsPage.setEmailInput('tom.holland')
-//     await MicrosoftTeamsPage.selectOperator('0-50')
-//     await MicrosoftTeamsPage.clickOnSubmitBtn()
-
-//     await expect(
-//       await MicrosoftTeamsPage.isErrorAlertDisplayed(
-//         await MicrosoftTeamsPage.emailInput
-//       )
-//     ).toBe(true)
-
-//     await MicrosoftTeamsPage.setCompanyWebsiteInput('tom-holland')
-//     await MicrosoftTeamsPage.selectOperator('0-50')
-//     await MicrosoftTeamsPage.setEmailInput('tom@holland')
-//     await MicrosoftTeamsPage.clickOnSubmitBtn()
-
-//     await expect(
-//       await MicrosoftTeamsPage.isErrorAlertDisplayed(
-//         await MicrosoftTeamsPage.emailInput
-//       )
-//     ).toBe(true)
-//   })
-// })
+    await MicrosoftTeamsPage.companyWebsiteInput.setValue('tom-holland')
+    await MicrosoftTeamsPage.selectOperator('0-50')
+    await MicrosoftTeamsPage.emailInput.setValue('tom@holland')
+    await MicrosoftTeamsPage.submitBtn.click()
+    await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))
+  })
+})

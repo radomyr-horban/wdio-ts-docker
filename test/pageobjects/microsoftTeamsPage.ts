@@ -1,134 +1,86 @@
-// import Page from './page.js'
+import Page from './page.js'
 
-// interface UserData {
-//   firstName: string
-//   lastName: string
-//   email: string
-//   website: string
-// }
+interface UserData {
+  firstName: string
+  lastName: string
+  email: string
+  website: string
+}
 
-// class MicrosoftTeamsPage extends Page {
-//   public isHeroOverviewTextDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('main > section > div > div > div > p')
-//   }
+class MicrosoftTeamsPage extends Page {
+  public get heroOverviewText() {
+    return $('main > section > div > div > div > p')
+  }
 
-//   public isFormSectionDescriptionDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('section > div > div > p')
-//   }
+  public get formSectionDescription() {
+    return $('section > div > div > p')
+  }
 
-//   //! Getters
-//   // get talkToExpertBtn() {
-//   //   return this.getElement('//span[text()="Talk to an expert"]')
-//   // }
+  public get firstNameInput() {
+    return $('input[id="FirstName"]')
+  }
 
-//   // get getStartedLink() {
-//   //   return this.getElement('//span[text()="Get started"]')
-//   // }
+  public get lastNameInput() {
+    return $('input[id="LastName"]')
+  }
 
-//   // get formSectionHeading() {
-//   //   return this.getElement('section > div > h2')
-//   // }
+  public get emailInput() {
+    return $('input[id="Email"]')
+  }
 
-//   // get formBox() {
-//   //   return this.getElement(
-//   //     'div[title="Interested in Operator Connect? (Bottom)"]'
-//   //   )
-//   // }
+  public get companyWebsiteInput() {
+    return $('input[id="Website"]')
+  }
 
-//   //todo: remove getters
-//   get firstNameInput() {
-//     return this.getElement('input[id="FirstName"]')
-//   }
+  public get operatorSelect() {
+    return $('select[id="Form_Operator_Connect_Seats__c"]')
+  }
 
-//   get lastNameInput() {
-//     return this.getElement('input[id="LastName"]')
-//   }
+  public get heading() {
+    return $('main h1')
+  }
 
-//   get emailInput() {
-//     return this.getElement('input[id="Email"]')
-//   }
+  public get talkToExpertBtn() {
+    return $('//span[text()="Talk to an expert"]')
+  }
 
-//   get companyWebsiteInput() {
-//     return this.getElement('input[id="Website"]')
-//   }
+  public get getStartedLink() {
+    return $('//span[text()="Get started"]')
+  }
 
-//   get operatorSelect() {
-//     return this.getElement('select[id="Form_Operator_Connect_Seats__c"]')
-//   }
+  public get formSectionHeading() {
+    return $('section > div > h2')
+  }
 
-//   //! isDisplayed()
-//   public isHeadingDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('main h1')
-//   }
+  public get firstArticleCategory() {
+    return $('#articles ul li:first-child a strong')
+  }
 
-//   public isTalkToExpertBtnDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('//span[text()="Talk to an expert"]')
-//   }
+  public get formBox() {
+    return $('div[title="Interested in Operator Connect? (Bottom)"]')
+  }
 
-//   public isGetStartedLinkDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('//span[text()="Get started"]')
-//   }
+  public get submitBtn() {
+    return $('button[type="submit"]')
+  }
 
-//   public isFormSectionHeadingDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('section > div > h2')
-//   }
+  async isErrorAlertDisplayed(inputField: WebdriverIO.Element): Promise<boolean> {
+    const inputId = await inputField.getAttribute('id')
+    return (await $(`input[id="${inputId}"]+div.mktoError`)).isDisplayed()
+  }
 
-//   public isFirstArticleCategoryDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed('#articles ul li:first-child a strong')
-//   }
-//   public isFormBoxDisplayed(): Promise<boolean> {
-//     return this.isElementDisplayed(
-//       'div[title="Interested in Operator Connect? (Bottom)"]'
-//     )
-//   }
+  async selectOperator(value: string) {
+    await (await this.operatorSelect).selectByVisibleText(value)
+  }
 
-//   //todo: fix `isErrorAlertDisplayed` method
-//   async isErrorAlertDisplayed(
-//     inputField: WebdriverIO.Element
-//   ): Promise<boolean> {
-//     const inputId = await inputField.getAttribute('id')
-//     return this.isElementDisplayed(`input[id="${inputId}"]+div.mktoError`)
-//   }
+  async fillForm(userData: UserData) {
+    await this.firstNameInput.setValue(userData.firstName)
+    await this.lastNameInput.setValue(userData.lastName)
+    await this.emailInput.setValue(userData.email)
+    await this.companyWebsiteInput.setValue(userData.website)
+    await this.operatorSelect.selectByVisibleText('0-50')
+    await this.submitBtn.click()
+  }
+}
 
-//   async clickOnSubmitBtn() {
-//     await this.clickElement('button[type="submit"]')
-//   }
-
-//   async setFirstNameInput(value: string) {
-//     await this.setElementInputValue('input[id="FirstName"]', value)
-//   }
-
-//   async setLastNameInput(value: string) {
-//     await this.setElementInputValue('input[id="LastName"]', value)
-//   }
-
-//   async setEmailInput(value: string) {
-//     await this.clearElementInputValue('input[id="Email"]')
-//     await this.setElementInputValue('input[id="Email"]', value)
-//   }
-
-//   async setCompanyWebsiteInput(value: string) {
-//     await this.setElementInputValue('input[id="Website"]', value)
-//   }
-
-//   //todo: fix type
-//   async selectOperator(value: string) {
-//     await (await this.operatorSelect).selectByVisibleText(value)
-//   }
-
-//   //todo: remove duplicate (`main h1`)
-//   public async doesHeadingContainText(text: string): Promise<boolean> {
-//     return await this.doesElementContainText('main h1', text)
-//   }
-
-//   async fillForm(userData: UserData) {
-//     await this.setFirstNameInput(userData.firstName)
-//     await this.setLastNameInput(userData.lastName)
-//     await this.setEmailInput(userData.email)
-//     await this.setCompanyWebsiteInput(userData.website)
-//     await this.selectOperator('0-50')
-//     await this.clickOnSubmitBtn()
-//   }
-// }
-
-// export default new MicrosoftTeamsPage()
+export default new MicrosoftTeamsPage()

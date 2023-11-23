@@ -8,7 +8,12 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         // browserVersion: 'stable',
         'goog:chromeOptions': {
-          args: ['headless', 'disable-gpu'],
+          args: [
+            '--headless',
+            '--disable-gpu',
+            '--no-sandbox',
+            '--disable-infobars',
+          ],
         },
       },
     ],

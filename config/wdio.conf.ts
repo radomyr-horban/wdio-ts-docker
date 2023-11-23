@@ -1,7 +1,7 @@
-import url from 'node:url'
-import path from 'node:path'
+// import url from 'node:url'
+// import path from 'node:path'
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+// const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
   //
   // ====================
