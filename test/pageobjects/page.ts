@@ -78,4 +78,16 @@ export default class Page {
       expect(Object.keys(titlesObject)).toContain(title.trim())
     }
   }
+
+  public async verifyListItemsWithTitlesArray(
+    elementsArray: WebdriverIO.ElementArray,
+    titlesArray: string[]
+  ): Promise<void> {
+    expect(elementsArray.length).toBe(titlesArray.length)
+
+    for (let i = 0; i < elementsArray.length; i++) {
+      const text = await elementsArray[i].getText()
+      expect(text).toContain(titlesArray[i])
+    }
+  }
 }

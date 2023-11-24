@@ -36,8 +36,8 @@ class HomePage extends Page {
     return $('[role="menuitem"] > a[href="/products/enterprise-integrations-ms-teams"]')
   }
 
-  public get globalNumbersLink() {
-    return $('[role="menuitem"] > a[href="/products/phone-numbers"]')
+  public get pricingGlobalNumbersLink() {
+    return $('[role="menuitem"] > a[href="/pricing/numbers"]')
   }
 
   //! Pricing
@@ -104,8 +104,8 @@ class HomePage extends Page {
     await this.clickElement(await this.blogLink)
   }
 
-  public async clickOnGlobalNumbersLink(): Promise<void> {
-    await this.clickElement(await this.globalNumbersLink)
+  public async clickOnPricingGlobalNumbersLink(): Promise<void> {
+    await this.clickElement(await this.pricingGlobalNumbersLink)
   }
 
   public async clickOnIntegrationsLink(): Promise<void> {
