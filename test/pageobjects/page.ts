@@ -2,8 +2,18 @@ import { UserData } from '../types'
 
 export default class Page {
   public async clickElement(element: WebdriverIO.Element): Promise<void> {
-    await element.waitForClickable()
+    await element.scrollIntoView()
+    await element.waitForDisplayed({ timeout: 5000 })
+    await element.waitForClickable({ timeout: 5000 })
+    // await browser.pause(500)
     await element.click()
+  }
+
+  public async setInputValue(element: WebdriverIO.Element, value: string): Promise<void> {
+    await element.waitForDisplayed({ timeout: 5000 })
+    await element.waitForClickable({ timeout: 5000 })
+    // await browser.pause(500)
+    await element.setValue(value)
   }
 
   public async closeCookiesBox(): Promise<void> {

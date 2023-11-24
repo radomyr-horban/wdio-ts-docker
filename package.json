@@ -11,7 +11,8 @@
     "test:spec": "wdio run ./config/wdio.conf.local.ts -- --spec ./test/specs/",
     "test:chrome": "wdio run ./config/wdio.conf.chrome.ts",
     "test:firefox": "wdio run ./config/wdio.conf.firefox.ts",
-    "test:edge": "wdio run ./config/wdio.conf.edge.ts"
+    "test:edge": "wdio run ./config/wdio.conf.edge.ts",
+    "test:github": "wdio run ./config/wdio.conf.github.ts"
   },
   "keywords": [],
   "author": "",

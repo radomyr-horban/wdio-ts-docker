@@ -2,15 +2,19 @@ import HomePage from '../pageobjects/homePage.js'
 import GlobalCoveragePage from '../pageobjects/globalCoveragePage.js'
 import ThankYouPage from '../pageobjects/thankYouPage.js'
 
-describe.skip('Global coverage page', () => {
+describe('Global coverage page', () => {
   beforeEach(async () => {
+    await browser.setWindowSize(1920, 1080)
     await browser.url('/')
     await HomePage.closeCookiesBox()
   })
 
-  it('11. should allow a user to submit a form with valid data', async () => {
+  it('should allow a user to submit a form with valid data', async () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnGlobalCoverageLink()
+
+    // await HomePage.whyTelnyxLink.click()
+    // await HomePage.globalCoverageLink.click() //! error - ???????
 
     await expect(browser).toHaveUrlContaining('/global-coverage')
     await expect(GlobalCoveragePage.heading).toBeDisplayed()
@@ -27,9 +31,11 @@ describe.skip('Global coverage page', () => {
     await expect(ThankYouPage.heroOverviewText).toBeDisplayed()
   })
 
-  it('12. should NOT allow a user to submit a form with invalid data', async () => {
+  it('should NOT allow a user to submit a form with invalid data', async () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnGlobalCoverageLink()
+    // await HomePage.whyTelnyxLink.click()
+    // await HomePage.globalCoverageLink.click() //! error - ??????
 
     await expect(browser).toHaveUrlContaining('/global-coverage')
     await expect(GlobalCoveragePage.heading).toBeDisplayed()

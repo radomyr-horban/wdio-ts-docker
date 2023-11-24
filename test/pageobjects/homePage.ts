@@ -2,118 +2,128 @@ import { $ } from '@wdio/globals'
 import Page from './page.js'
 
 class HomePage extends Page {
-  //! navigation
-  get resourcesLink() {
-    return $('//nav//span[text()="Resources"]')
+  //! 1. Navigation
+  public get productsLink() {
+    // return $('//nav//span[text()="Products"]')
+    // return $('header > div > div>div:nth-child(3) > nav>button:nth-child(1)')
+    return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(1)')
   }
 
-  async clickOnResourcesLink(): Promise<void> {
-    await this.clickElement(await this.resourcesLink)
+  public get solutionsLink() {
+    // return $('//nav//span[text()="Solutions"]')
+    return $('header > div > div>div:nth-child(3) [href="/solutions"]')
   }
 
-  get solutionsLink() {
-    return $('//nav//span[text()="Solutions"]')
+  public get pricingLink() {
+    // return $('//nav//span[text()="Pricing"]')
+    return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(2)')
   }
 
-  async clickOnSolutionsLink(): Promise<void> {
-    await this.clickElement(await this.solutionsLink)
+  public get whyTelnyxLink() {
+    // return $('//nav//span[text()="Why Telnyx"]')
+    return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(3)')
   }
 
-  get pricingLink() {
-    return $('//nav//span[text()="Pricing"]')
+  public get resourcesLink() {
+    // return $('//nav//span[text()="Resources"]')
+    // return $('//*[@id="radix-:Rmljm:"]/span/span/span')
+    return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(4)')
   }
 
-  async clickOnPricingLink(): Promise<void> {
-    await this.clickElement(await this.pricingLink)
-  }
-
-  get whyTelnyxLink() {
-    return $('//nav//span[text()="Why Telnyx"]')
-  }
-
-  async clickOnWhyTelnyxLink(): Promise<void> {
-    await this.clickElement(await this.whyTelnyxLink)
-  }
-
-  get productsLink() {
-    return $('//nav//span[text()="Products"]')
-  }
-
-  async clickOnProductsLink(): Promise<void> {
-    await this.clickElement(await this.productsLink)
-  }
-
-  //! Sub-navigation
-  get supportCenterLink() {
-    return $('[role="menuitem"] > a[href="https://support.telnyx.com/en/"]')
-  }
-
-  async clickOnSupportCenterLink(): Promise<void> {
-    await this.clickElement(await this.supportCenterLink)
-  }
-
-  get blogLink() {
-    return $('[role="menuitem"] > a[href="/resources"]')
-  }
-
-  async clickOnBlogLink(): Promise<void> {
-    await this.clickElement(await this.blogLink)
-  }
-
-  get globalNumbersLink() {
-    return $('[role="menuitem"] > a[href="/products/phone-numbers"]')
-  }
-
-  async clickOnGlobalNumbersLink(): Promise<void> {
-    await this.clickElement(await this.globalNumbersLink)
-  }
-
-  get globalCoverageLink() {
-    return $('[role="menuitem"] > a[href="/global-coverage"]')
-  }
-
-  async clickOnGlobalCoverageLink(): Promise<void> {
-    await this.clickElement(await this.globalCoverageLink)
-  }
-
-  get integrationsLink() {
-    return $('[role="menuitem"] > a[href="https://marketplace.telnyx.com"]')
-  }
-
-  async clickOnIntegrationsLink(): Promise<void> {
-    await this.clickElement(await this.integrationsLink)
-  }
-
-  get microsoftTeamsLink() {
+  //! 2. Sub-navigation
+  //! Products
+  public get microsoftTeamsLink() {
     return $('[role="menuitem"] > a[href="/products/enterprise-integrations-ms-teams"]')
   }
 
-  async clickOnMicrosoftTeamsLink(): Promise<void> {
-    await this.clickElement(await this.microsoftTeamsLink)
+  public get globalNumbersLink() {
+    return $('[role="menuitem"] > a[href="/products/phone-numbers"]')
   }
 
-  get ioTSimCardsLink() {
+  //! Pricing
+  public get ioTSimCardsLink() {
     return $('[role="menuitem"] > a[href="/pricing/iot-data-plans"]')
   }
 
-  async clickOnIoTSimCardsLink(): Promise<void> {
-    await this.clickElement(await this.ioTSimCardsLink)
+  //! Why Telnyx
+  public get globalCoverageLink() {
+    return $('[role="menuitem"] > a[href="/global-coverage"]')
   }
 
-  //! Footer
-  get releaseNotesLink() {
+  public get integrationsLink() {
+    return $('[role="menuitem"] > a[href="https://marketplace.telnyx.com"]')
+  }
+
+  //! Resources
+  public get blogLink() {
+    return $('[role="menuitem"] > a[href="/resources"]')
+  }
+
+  public get supportCenterLink() {
+    return $('[role="menuitem"] > a[href="https://support.telnyx.com/en/"]')
+  }
+
+  //! 3. Footer
+  public get releaseNotesLink() {
     return $('footer a[href="/release-notes"]')
   }
 
-  async clickOnReleaseNotesLink(): Promise<void> {
-    await this.clickElement(await this.releaseNotesLink)
-  }
-
-  get telnyxVsTwilioLink() {
+  public get telnyxVsTwilioLink() {
     return $('footer a[href="/the-better-twilio-alternative"]')
   }
 
-  async clickOnTelnyxVsTwilioLink(): Promise<void> {
+  public async clickOnResourcesLink(): Promise<void> {
+    await this.clickElement(await this.resourcesLink)
+  }
+
+  public async clickOnSolutionsLink(): Promise<void> {
+    await this.clickElement(await this.solutionsLink)
+  }
+
+  public async clickOnPricingLink(): Promise<void> {
+    await this.clickElement(await this.pricingLink)
+  }
+
+  public async clickOnWhyTelnyxLink(): Promise<void> {
+    await this.clickElement(await this.whyTelnyxLink)
+  }
+
+  public async clickOnProductsLink(): Promise<void> {
+    await this.clickElement(await this.productsLink)
+  }
+
+  public async clickOnGlobalCoverageLink(): Promise<void> {
+    await this.clickElement(await this.globalCoverageLink)
+  }
+
+  public async clickOnSupportCenterLink(): Promise<void> {
+    await this.clickElement(await this.supportCenterLink)
+  }
+
+  public async clickOnBlogLink(): Promise<void> {
+    await this.clickElement(await this.blogLink)
+  }
+
+  public async clickOnGlobalNumbersLink(): Promise<void> {
+    await this.clickElement(await this.globalNumbersLink)
+  }
+
+  public async clickOnIntegrationsLink(): Promise<void> {
+    await this.clickElement(await this.integrationsLink)
+  }
+
+  public async clickOnMicrosoftTeamsLink(): Promise<void> {
+    await this.clickElement(await this.microsoftTeamsLink)
+  }
+
+  public async clickOnIoTSimCardsLink(): Promise<void> {
+    await this.clickElement(await this.ioTSimCardsLink)
+  }
+
+  public async clickOnReleaseNotesLink(): Promise<void> {
+    await this.clickElement(await this.releaseNotesLink)
+  }
+  public async clickOnTelnyxVsTwilioLink(): Promise<void> {
     await this.clickElement(await this.telnyxVsTwilioLink)
   }
 }

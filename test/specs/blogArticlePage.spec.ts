@@ -2,8 +2,9 @@ import HomePage from '../pageobjects/homePage.js'
 import BlogPage from '../pageobjects/blogPage.js'
 import BlogArticlePage from '../pageobjects/blogArticlePage.js'
 
-describe.skip('Blog article page', () => {
+describe('Blog article page', () => {
   beforeEach(async () => {
+    await browser.setWindowSize(1920, 1080)
     await browser.url('/')
     await HomePage.closeCookiesBox()
   })
@@ -11,6 +12,9 @@ describe.skip('Blog article page', () => {
   it('should display main elements', async () => {
     await HomePage.clickOnResourcesLink()
     await HomePage.clickOnBlogLink()
+    // await HomePage.resourcesLink.click()
+    // await HomePage.blogLink.click()
+
     await expect(browser).toHaveUrlContaining('/resources')
     await expect(browser).toHaveUrlContaining('/resources')
     await expect(BlogPage.heading).toHaveTextContaining('Browse all articles, guides, and news')
@@ -22,6 +26,7 @@ describe.skip('Blog article page', () => {
     await expect(BlogPage.firstArticleTitle).toBeDisplayed()
     await expect(BlogPage.firstArticleAuthor).toBeDisplayed()
     await BlogPage.clickOnFirstArticle()
+    // await BlogPage.firstArticleLink.click()
 
     //! inside
     await expect(BlogArticlePage.backToBlogLink).toBeDisplayed()

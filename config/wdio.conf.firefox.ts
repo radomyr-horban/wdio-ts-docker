@@ -7,9 +7,9 @@ export const config: WebdriverIO.Config = {
       {
         browserName: 'firefox',
         // browserVersion: 'latest',
-        // 'moz:firefoxOptions': {
-        //   args: ['-headless'],
-        // },
+        'moz:firefoxOptions': {
+          args: ['-headless'],
+        },
       },
     ],
   },

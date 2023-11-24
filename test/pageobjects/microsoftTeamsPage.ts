@@ -11,6 +11,7 @@ class MicrosoftTeamsPage extends Page {
     return $('section > div > div > p')
   }
 
+  //! input
   public get firstNameInput() {
     return $('input[id="FirstName"]')
   }
@@ -30,6 +31,24 @@ class MicrosoftTeamsPage extends Page {
   public get operatorSelect() {
     return $('select[id="Form_Operator_Connect_Seats__c"]')
   }
+
+  public async setFirstNameInput(value: string) {
+    await this.setInputValue(await this.firstNameInput, value)
+  }
+
+  public async setLastNameInput(value: string) {
+    await this.setInputValue(await this.lastNameInput, value)
+  }
+
+  public async setEmailInput(value: string) {
+    await this.setInputValue(await this.emailInput, value)
+  }
+
+  public async setCompanyWebsiteInput(value: string) {
+    await this.setInputValue(await this.companyWebsiteInput, value)
+  }
+
+  //!
 
   public get heading() {
     return $('main h1')
@@ -59,17 +78,30 @@ class MicrosoftTeamsPage extends Page {
     return $('button[type="submit"]')
   }
 
+  public async clickOnSubmitBtn(): Promise<void> {
+    await this.clickElement(await this.submitBtn)
+  }
+
   public async selectOperator(value: string) {
     await (await this.operatorSelect).selectByVisibleText(value)
   }
 
   public async fillForm(userData: UserData) {
-    await this.firstNameInput.setValue(userData.firstName)
-    await this.lastNameInput.setValue(userData.lastName)
-    await this.emailInput.setValue(userData.email)
-    await this.companyWebsiteInput.setValue(userData.website)
+    // await this.firstNameInput.setValue(userData.firstName)
+    // await this.lastNameInput.setValue(userData.lastName)
+    // await this.emailInput.setValue(userData.email)
+    // await this.companyWebsiteInput.setValue(userData.website)
+
+    await this.setFirstNameInput(userData.firstName)
+    await this.setLastNameInput(userData.lastName)
+    await this.setEmailInput(userData.email)
+    await this.setCompanyWebsiteInput(userData.website)
+
+    await this.operatorSelect.waitForDisplayed()
+    await this.operatorSelect.scrollIntoView()
     await this.operatorSelect.selectByVisibleText('0-50')
-    await this.submitBtn.click()
+
+    await this.clickOnSubmitBtn()
   }
 }
 

@@ -9,10 +9,13 @@ export const config: WebdriverIO.Config = {
         // browserVersion: 'stable',
         'goog:chromeOptions': {
           args: [
+            // 'start-maximized',
+            // 'start-fullscreen',
+            '--window-size=1920,1080',
             '--headless',
-            '--disable-gpu',
-            '--no-sandbox',
-            '--disable-infobars',
+            // 'disable-gpu',
+            // 'no-sandbox',
+            // 'disable-infobars',
           ],
         },
       },

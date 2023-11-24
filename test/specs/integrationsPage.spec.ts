@@ -3,10 +3,11 @@ import IntegrationsPage from '../pageobjects/integrationsPage.js'
 
 import integrationsPage from '../constants/integrationsPage.json' assert { type: 'json' }
 
-console.log(integrationsPage.Categories.All)
+// console.log(integrationsPage.Categories.All)
 
 describe('Integrations page', () => {
   beforeEach(async () => {
+    await browser.setWindowSize(1920, 1080)
     await browser.url('/')
     await HomePage.closeCookiesBox()
   })
@@ -14,12 +15,16 @@ describe('Integrations page', () => {
   it('should allow a user to use filters', async () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnIntegrationsLink()
+    // await HomePage.whyTelnyxLink.click()
+    // await HomePage.integrationsLink.click()
 
     const tabs = await browser.getWindowHandles()
-    console.log(tabs)
-    await browser.switchToWindow(tabs[1])
-    await expect(browser).toHaveUrlContaining('marketplace')
+    // console.log(tabs)
+    if (tabs.length > 1) {
+      await browser.switchToWindow(tabs[1])
+    }
 
+    await expect(browser).toHaveUrlContaining('marketplace')
     await expect(IntegrationsPage.heading).toBeDisplayed()
     await expect(IntegrationsPage.heading).toHaveText('Welcome to the Telnyx Integration Marketplace')
     await expect(IntegrationsPage.heroOverviewText).toBeDisplayed()
