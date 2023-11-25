@@ -40,10 +40,11 @@ class HomePage extends Page {
     return $('[role="menuitem"] > a[href="/pricing/numbers"]')
   }
 
-  //! Pricing
   public get ioTSimCardsLink() {
-    return $('[role="menuitem"] > a[href="/pricing/iot-data-plans"]')
+    return $('[role="menuitem"] > a[href="/products/iot-sim-card"]')
   }
+
+  //! Pricing
 
   //! Why Telnyx
   public get globalCoverageLink() {

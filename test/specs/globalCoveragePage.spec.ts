@@ -13,9 +13,6 @@ describe('Global coverage page', () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnGlobalCoverageLink()
 
-    // await HomePage.whyTelnyxLink.click()
-    // await HomePage.globalCoverageLink.click() //! error - ???????
-
     await expect(browser).toHaveUrlContaining('/global-coverage')
     await expect(GlobalCoveragePage.heading).toBeDisplayed()
     await expect(GlobalCoveragePage.heading).toHaveText('Global coverage')
@@ -34,8 +31,6 @@ describe('Global coverage page', () => {
   it('should NOT allow a user to submit a form with invalid data', async () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnGlobalCoverageLink()
-    // await HomePage.whyTelnyxLink.click()
-    // await HomePage.globalCoverageLink.click() //! error - ??????
 
     await expect(browser).toHaveUrlContaining('/global-coverage')
     await expect(GlobalCoveragePage.heading).toBeDisplayed()

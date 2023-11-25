@@ -12,8 +12,6 @@ describe('Blog article page', () => {
   it('should display main elements', async () => {
     await HomePage.clickOnResourcesLink()
     await HomePage.clickOnBlogLink()
-    // await HomePage.resourcesLink.click()
-    // await HomePage.blogLink.click()
 
     await expect(browser).toHaveUrlContaining('/resources')
     await expect(browser).toHaveUrlContaining('/resources')
@@ -26,7 +24,6 @@ describe('Blog article page', () => {
     await expect(BlogPage.firstArticleTitle).toBeDisplayed()
     await expect(BlogPage.firstArticleAuthor).toBeDisplayed()
     await BlogPage.clickOnFirstArticle()
-    // await BlogPage.firstArticleLink.click()
 
     //! inside
     await expect(BlogArticlePage.backToBlogLink).toBeDisplayed()

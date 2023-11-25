@@ -1,35 +1,35 @@
 import Page from './page.js'
 
 class IntegrationsPage extends Page {
-  get heading() {
+  public get heading() {
     return $('main h1')
   }
 
-  get heroOverviewText() {
+  public get heroOverviewText() {
     return $('h2.description > p')
   }
 
-  get integrationsSection() {
+  public get integrationsSection() {
     return $('div.sidebar-section.collection-menu-section')
   }
 
-  get integrationsSectionTitle() {
+  public get integrationsSectionTitle() {
     return $('div.sidebar-section.collection-menu-section > h4')
   }
 
-  get integrationsSectionListItems() {
+  public get integrationsSectionListItems() {
     return $$('div.sidebar-section.collection-menu-section > ul > li a')
   }
 
-  get categoriesSection() {
+  public get categoriesSection() {
     return $('div.sidebar-section.category-menu-section')
   }
 
-  get categoriesSectionTitle() {
+  public get categoriesSectionTitle() {
     return $('div.sidebar-section.category-menu-section > h4')
   }
 
-  get categoriesSectionListItems() {
+  public get categoriesSectionListItems() {
     return $$('div.sidebar-section.category-menu-section > ul > li a')
   }
 }

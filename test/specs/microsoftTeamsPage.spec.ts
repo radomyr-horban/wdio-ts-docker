@@ -12,8 +12,7 @@ describe('Microsoft Teams page', () => {
   it('should allow a user to submit a form with valid data', async () => {
     await HomePage.clickOnProductsLink()
     await HomePage.clickOnMicrosoftTeamsLink()
-    // await HomePage.productsLink.click()
-    // await HomePage.microsoftTeamsLink.click()
+
 
     await expect(browser).toHaveUrlContaining('/products/enterprise-integrations-ms-teams')
     await expect(await MicrosoftTeamsPage.heading).toBeDisplayed()
@@ -35,8 +34,7 @@ describe('Microsoft Teams page', () => {
   it('should NOT allow a user to submit a form with invalid data', async () => {
     await HomePage.clickOnProductsLink()
     await HomePage.clickOnMicrosoftTeamsLink()
-    // await HomePage.productsLink.click()
-    // await HomePage.microsoftTeamsLink.click()
+
 
     await expect(browser).toHaveUrlContaining('/products/enterprise-integrations-ms-teams')
 
@@ -52,26 +50,26 @@ describe('Microsoft Teams page', () => {
     await MicrosoftTeamsPage.clickOnSubmitBtn()
     await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.firstNameInput))
 
-    // await MicrosoftTeamsPage.firstNameInput.setValue('Tom')
+   
     await MicrosoftTeamsPage.setFirstNameInput('Tom')
     await MicrosoftTeamsPage.clickOnSubmitBtn()
     await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.lastNameInput))
 
-    // await MicrosoftTeamsPage.lastNameInput.setValue('Holland')
+    
     await MicrosoftTeamsPage.setLastNameInput('Holland')
     await MicrosoftTeamsPage.clickOnSubmitBtn()
     await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))
 
-    // await MicrosoftTeamsPage.emailInput.setValue('tom.holland')
+  
     await MicrosoftTeamsPage.setEmailInput('tom.holland')
     await MicrosoftTeamsPage.selectOperator('0-50')
     await MicrosoftTeamsPage.clickOnSubmitBtn()
     await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))
 
-    // await MicrosoftTeamsPage.companyWebsiteInput.setValue('tom-holland')
+   
     await MicrosoftTeamsPage.setCompanyWebsiteInput('tom-holland')
     await MicrosoftTeamsPage.selectOperator('0-50')
-    // await MicrosoftTeamsPage.emailInput.setValue('tom@holland')
+    
     await MicrosoftTeamsPage.setEmailInput('tom@holland')
     await MicrosoftTeamsPage.clickOnSubmitBtn()
     await expect(await MicrosoftTeamsPage.isErrorAlertDisplayed(await MicrosoftTeamsPage.emailInput))

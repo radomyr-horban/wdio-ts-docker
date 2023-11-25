@@ -16,6 +16,13 @@ export default class Page {
     await element.setValue(value)
   }
 
+  public async switchTab(): Promise<void> {
+    const tabs = await browser.getWindowHandles()
+    if (tabs.length > 1) {
+      await browser.switchToWindow(tabs[1])
+    }
+  }
+
   public async closeCookiesBox(): Promise<void> {
     const closeCookiesBoxButton = await $('div#onetrust-close-btn-container')
 
@@ -83,11 +90,14 @@ export default class Page {
     elementsArray: WebdriverIO.ElementArray,
     titlesArray: string[]
   ): Promise<void> {
-    expect(elementsArray.length).toBe(titlesArray.length)
+    await expect(elementsArray.length).toBe(titlesArray.length)
 
     for (let i = 0; i < elementsArray.length; i++) {
+      await elementsArray[i].waitForDisplayed({ timeout: 3000 })
+
       const text = await elementsArray[i].getText()
-      expect(text).toContain(titlesArray[i])
+
+      await expect(text).toContain(titlesArray[i])
     }
   }
 }

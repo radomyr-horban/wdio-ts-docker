@@ -4,9 +4,3 @@ export interface UserData {
   email: string
   website: string
 }
-
-export type JsonType = {
-  Integrations: {
-    [key: string]: string
-  }
-}

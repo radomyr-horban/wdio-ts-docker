@@ -1,11 +1,11 @@
 import Page from './page.js'
 
 class ThankYouPage extends Page {
-  get heading() {
+  public get heading() {
     return $('main h1')
   }
 
-  get heroOverviewText() {
+  public get heroOverviewText() {
     return $('main > section > div > div > p')
   }
 }

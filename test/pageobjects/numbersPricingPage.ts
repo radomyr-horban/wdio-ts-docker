@@ -1,7 +1,6 @@
 import Page from './page.js'
 
 class NumbersPricingPage extends Page {
-  // Elements
   public get heading() {
     return $('main h1')
   }
@@ -42,7 +41,6 @@ class NumbersPricingPage extends Page {
     return $$('table[id="Number-pricing"] td')
   }
 
-  // Clickers
   async clickOnPayAsYouGoBoxLink() {
     await (await this.payAsYouGoBoxLink).waitForDisplayed()
     await (await this.payAsYouGoBoxLink).click()
@@ -58,7 +56,6 @@ class NumbersPricingPage extends Page {
     await (await this.currencyFilterDropdownBtn).click()
   }
 
-  // Selectors
   async selectCountryOption(value: string) {
     const countryOption = await $(`//span[@id="radix-:r3k:" and text()='${value}']`)
     await this.clickElement(countryOption)

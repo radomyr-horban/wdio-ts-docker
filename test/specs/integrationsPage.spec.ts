@@ -3,8 +3,6 @@ import IntegrationsPage from '../pageobjects/integrationsPage.js'
 
 import integrationsPage from '../constants/integrationsPage.json' assert { type: 'json' }
 
-// console.log(integrationsPage.Categories.All)
-
 describe('Integrations page', () => {
   beforeEach(async () => {
     await browser.setWindowSize(1920, 1080)
@@ -15,14 +13,8 @@ describe('Integrations page', () => {
   it('should allow a user to use filters', async () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnIntegrationsLink()
-    // await HomePage.whyTelnyxLink.click()
-    // await HomePage.integrationsLink.click()
 
-    const tabs = await browser.getWindowHandles()
-    // console.log(tabs)
-    if (tabs.length > 1) {
-      await browser.switchToWindow(tabs[1])
-    }
+    await HomePage.switchTab()
 
     await expect(browser).toHaveUrlContaining('marketplace')
     await expect(IntegrationsPage.heading).toBeDisplayed()
