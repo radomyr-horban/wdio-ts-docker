@@ -7,6 +7,13 @@ jobs:
     name: Run end-to-end tests
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    #! docker
+    services:
+      docker:
+        image: docker:stable
+        options: --privileged # Run Docker in privileged mode
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -14,9 +21,14 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
+
+      #! docker
+      - name: Setup Docker server
+        run: docker-compose up
+
       - name: Run tests
-        continue-on-error: true
-        run: npm run test:github
+        # continue-on-error: true
+        run: npm run test:chrome
 
       - name: Generate Allure Report
         if: always()

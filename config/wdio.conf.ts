@@ -35,6 +35,13 @@ export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
+  
+  //! docker 
+  services: ['docker'],
+  hostname: 'localhost',
+  port: 4444,
+  path: '/',
+
   specs: ['../test/specs/**/*.ts'],
   // Patterns to exclude.
   exclude: [
@@ -113,7 +120,7 @@ export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  // services: [],
+  
   //
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
