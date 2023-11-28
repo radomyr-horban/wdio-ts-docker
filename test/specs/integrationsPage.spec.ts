@@ -14,7 +14,7 @@ describe('Integrations page', () => {
     await HomePage.clickOnWhyTelnyxLink()
     await HomePage.clickOnIntegrationsLink()
 
-    await HomePage.switchTab()
+    await HomePage.switchTab(1)
 
     await expect(browser).toHaveUrlContaining('marketplace')
     await expect(IntegrationsPage.heading).toBeDisplayed()

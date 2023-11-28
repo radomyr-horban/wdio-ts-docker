@@ -37,14 +37,6 @@ class ReleaseNotesPage extends Page {
     return $('svg[aria-describedby="go-to-previous-page"]')
   }
 
-  // public get nextPageLinkTitle() {
-  //   return $('title[id="go-to-next-page"]')
-  // }
-
-  // public get previousPageLinkTitle() {
-  //   return $('title[id="go-to-previous-page"]')
-  // }
-
   public get currentPageNumber() {
     return $('nav[aria-label="pagination"] > p > span:first-child')
   }

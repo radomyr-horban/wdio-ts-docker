@@ -22,9 +22,19 @@ class BlogPage extends Page {
     return $('div[role="option"] a')
   }
 
+  //! search
   public get searchInput() {
     return $('input[id="search"]')
   }
+
+  public get searchResultsText() {
+    return $('main h2')
+  }
+
+  public get searchResultCards() {
+    return $$('main ul li')
+  }
+  //!
 
   public get articlesSectionHeading() {
     return $('#articles h2')
@@ -68,6 +78,10 @@ class BlogPage extends Page {
 
   public get firstArticleLink() {
     return $('#articles ul li:first-child a')
+  }
+
+  public async setSearchInput(value: string): Promise<void> {
+    await this.setInputValue(await this.searchInput, value)
   }
 
   public async clickOnFirstProductFilterOption(): Promise<void> {

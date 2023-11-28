@@ -1,7 +1,7 @@
 import Page from './page.js'
 
 class IoTSimCardsPage extends Page {
-  // Elements
+
   public get heading() {
     return $('main h1')
   }

@@ -4,33 +4,27 @@ import Page from './page.js'
 class HomePage extends Page {
   //! 1. Navigation
   public get productsLink() {
-    // return $('//nav//span[text()="Products"]')
-    // return $('header > div > div>div:nth-child(3) > nav>button:nth-child(1)')
     return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(1)')
   }
 
   public get solutionsLink() {
-    // return $('//nav//span[text()="Solutions"]')
     return $('header > div > div>div:nth-child(3) [href="/solutions"]')
   }
 
   public get pricingLink() {
-    // return $('//nav//span[text()="Pricing"]')
     return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(2)')
   }
 
   public get whyTelnyxLink() {
-    // return $('//nav//span[text()="Why Telnyx"]')
     return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(3)')
   }
 
   public get resourcesLink() {
-    // return $('//nav//span[text()="Resources"]')
-    // return $('//*[@id="radix-:Rmljm:"]/span/span/span')
     return $('header > div > div>div:nth-child(3) > nav > button:nth-of-type(4)')
   }
 
   //! 2. Sub-navigation
+
   //! Products
   public get microsoftTeamsLink() {
     return $('[role="menuitem"] > a[href="/products/enterprise-integrations-ms-teams"]')
@@ -58,6 +52,10 @@ class HomePage extends Page {
   //! Resources
   public get blogLink() {
     return $('[role="menuitem"] > a[href="/resources"]')
+  }
+
+  public get customerStories() {
+    return $('[role="menuitem"] > a[href="/customer-stories"]')
   }
 
   public get supportCenterLink() {
@@ -103,6 +101,9 @@ class HomePage extends Page {
 
   public async clickOnBlogLink(): Promise<void> {
     await this.clickElement(await this.blogLink)
+  }
+  public async clickOnCustomerStoriesLink(): Promise<void> {
+    await this.clickElement(await this.customerStories)
   }
 
   public async clickOnPricingGlobalNumbersLink(): Promise<void> {

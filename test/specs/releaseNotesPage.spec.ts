@@ -23,8 +23,6 @@ describe('Release Notes page', () => {
     await ReleaseNotesPage.clickOnFilterDropdown()
     await expect(ReleaseNotesPage.filterDropdownList).toBeDisplayed()
 
-    //!error
-
     await (await ReleaseNotesPage.filterDropdown).scrollIntoView()
 
     await ReleaseNotesPage.verifyListItemsWithTitlesArray(

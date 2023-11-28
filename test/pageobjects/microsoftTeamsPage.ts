@@ -48,8 +48,6 @@ class MicrosoftTeamsPage extends Page {
     await this.setInputValue(await this.companyWebsiteInput, value)
   }
 
-
-
   public get heading() {
     return $('main h1')
   }
@@ -87,8 +85,6 @@ class MicrosoftTeamsPage extends Page {
   }
 
   public async fillForm(userData: UserData) {
-  
-
     await this.setFirstNameInput(userData.firstName)
     await this.setLastNameInput(userData.lastName)
     await this.setEmailInput(userData.email)

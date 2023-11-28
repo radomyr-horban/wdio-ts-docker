@@ -5,21 +5,19 @@ export default class Page {
     await element.scrollIntoView()
     await element.waitForDisplayed({ timeout: 5000 })
     await element.waitForClickable({ timeout: 5000 })
-    // await browser.pause(500)
     await element.click()
   }
 
   public async setInputValue(element: WebdriverIO.Element, value: string): Promise<void> {
     await element.waitForDisplayed({ timeout: 5000 })
     await element.waitForClickable({ timeout: 5000 })
-    // await browser.pause(500)
     await element.setValue(value)
   }
 
-  public async switchTab(): Promise<void> {
+  public async switchTab(tab: number): Promise<void> {
     const tabs = await browser.getWindowHandles()
     if (tabs.length > 1) {
-      await browser.switchToWindow(tabs[1])
+      await browser.switchToWindow(tabs[tab])
     }
   }
 
