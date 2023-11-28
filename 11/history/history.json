@@ -1,1 +1,0 @@
-{"f479db182c0ec440359431950f2f3c7c":{"statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1},"items":[{"uid":"183bb986d5393c8d","reportUrl":"https://radomyr-horban.github.io/wdio-ts-docker/11//#testresult/183bb986d5393c8d","status":"passed","time":{"start":1700129834898,"stop":1700129835698,"duration":800}}]}}
