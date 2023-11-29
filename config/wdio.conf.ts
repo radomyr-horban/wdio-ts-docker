@@ -3,9 +3,6 @@
 
 // const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
 export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
-  // Set browser desired width and height
-
-  //
   // ====================
   // Runner Configuration
   // ====================
@@ -18,6 +15,11 @@ export const config: Omit<WebdriverIO.Config, 'capabilities'> = {
       transpileOnly: true,
     },
   },
+
+  //! Docker
+  hostname: 'selenoid',
+  port: 4444,
+  path: '/wd/hub',
 
   //
   // ==================

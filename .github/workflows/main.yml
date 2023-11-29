@@ -12,26 +12,30 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Run tests
-        continue-on-error: true
-        run: npm run test:github
 
-      - name: Generate Allure Report
-        if: always()
-        run: npm run allure:generate
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: wdio-test-results
-          path: allure-results/
+      - name: Build docker and run tests
+        run: 'make ci-up'
 
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: allure-test-results
-          path: allure-report/
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Run tests
+      #   continue-on-error: true
+      #   run: npm run test:github
+
+      # - name: Generate Allure Report
+      #   if: always()
+      #   run: npm run allure:generate
+      # - uses: actions/upload-artifact@v2
+      #   if: always()
+      #   with:
+      #     name: wdio-test-results
+      #     path: allure-results/
+
+      # - uses: actions/upload-artifact@v2
+      #   if: always()
+      #   with:
+      #     name: allure-test-results
+      #     path: allure-report/
 
       - name: Get Allure history
         uses: actions/checkout@v3
@@ -41,7 +45,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report action from marketplace
+      - name: Setup allure report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
