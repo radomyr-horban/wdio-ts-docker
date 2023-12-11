@@ -5,6 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "allure:report": "allure generate allure-results -o allure-report --clean && allure open",
     "allure:generate": "allure generate allure-results -o allure-report --clean",
     "allure:serve": "allure open allure-report",
     "test": "wdio run ./config/wdio.conf.local.ts",

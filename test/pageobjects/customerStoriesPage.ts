@@ -19,7 +19,7 @@ class CustomerStoriesPage extends Page {
   }
 
   public async clickOnFirstArticleCard(): Promise<void> {
-    await this.clickElement(await this.firstArticleCard)
+    await super.clickElement(await this.firstArticleCard)
   }
 }
 

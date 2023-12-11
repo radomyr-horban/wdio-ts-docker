@@ -42,23 +42,25 @@ class ReleaseNotesPage extends Page {
   }
 
   public async clickOnFilterDropdown() {
-    await (await this.filterDropdown).waitForDisplayed()
-    await (await this.filterDropdown).click()
+    // await (await this.filterDropdown).waitForDisplayed()
+    // await (await this.filterDropdown).click()
+
+    await super.clickElement(await this.filterDropdown)
   }
 
   public async selectProductOption(value: string) {
     const optionContainingSpan = await $(
       `//div[@role="listbox"]//div[@role="option"][descendant::span[text()='${value}']]`
     )
-    await this.clickElement(optionContainingSpan)
+    await super.clickElement(optionContainingSpan)
   }
 
   public async clickOnNextPageLink() {
-    await this.clickElement(await this.nextPageLink)
+    await super.clickElement(await this.nextPageLink)
   }
 
   public async clickOnPreviousPageLink() {
-    await this.clickElement(await this.previousPageLink)
+    await super.clickElement(await this.previousPageLink)
   }
 }
 

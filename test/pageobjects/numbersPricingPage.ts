@@ -58,12 +58,12 @@ class NumbersPricingPage extends Page {
 
   async selectCountryOption(value: string) {
     const countryOption = await $(`//span[@id="radix-:r3k:" and text()='${value}']`)
-    await this.clickElement(countryOption)
+    await super.clickElement(countryOption)
   }
 
   async selectCurrencyOption(value: string) {
     const currencyOption = await $(`//span[@id="radix-:re9:" and text()='${value}']`)
-    await this.clickElement(currencyOption)
+    await super.clickElement(currencyOption)
   }
 }
 

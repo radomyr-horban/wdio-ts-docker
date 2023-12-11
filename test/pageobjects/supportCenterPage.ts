@@ -22,17 +22,23 @@ class SupportCenterPage extends Page {
   }
 
   public async clickOnSearchInput() {
-    await (await this.searchInput).waitForDisplayed()
-    await (await this.searchInput).click()
+    // await (await this.searchInput).waitForDisplayed()
+    // await (await this.searchInput).click()
+
+    await super.clickElement(await this.searchInput)
   }
 
   public async clickOnSearchClearBtn() {
-    await (await this.searchClearBtn).waitForDisplayed()
-    await (await this.searchClearBtn).click()
+    // await (await this.searchClearBtn).waitForDisplayed()
+    // await (await this.searchClearBtn).click()
+
+    await super.clickElement(await this.searchClearBtn)
   }
 
   public async setSearchInput(value: string) {
-    await (await this.searchInput).setValue(value)
+    // await (await this.searchInput).setValue(value)
+
+    await super.setInputValue(await this.searchInput, value)
   }
 }
 

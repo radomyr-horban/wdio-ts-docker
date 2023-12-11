@@ -72,61 +72,61 @@ class HomePage extends Page {
   }
 
   public async clickOnResourcesLink(): Promise<void> {
-    await this.clickElement(await this.resourcesLink)
+    await super.clickElement(await this.resourcesLink)
   }
 
   public async clickOnSolutionsLink(): Promise<void> {
-    await this.clickElement(await this.solutionsLink)
+    await super.clickElement(await this.solutionsLink)
   }
 
   public async clickOnPricingLink(): Promise<void> {
-    await this.clickElement(await this.pricingLink)
+    await super.clickElement(await this.pricingLink)
   }
 
   public async clickOnWhyTelnyxLink(): Promise<void> {
-    await this.clickElement(await this.whyTelnyxLink)
+    await super.clickElement(await this.whyTelnyxLink)
   }
 
   public async clickOnProductsLink(): Promise<void> {
-    await this.clickElement(await this.productsLink)
+    await super.clickElement(await this.productsLink)
   }
 
   public async clickOnGlobalCoverageLink(): Promise<void> {
-    await this.clickElement(await this.globalCoverageLink)
+    await super.clickElement(await this.globalCoverageLink)
   }
 
   public async clickOnSupportCenterLink(): Promise<void> {
-    await this.clickElement(await this.supportCenterLink)
+    await super.clickElement(await this.supportCenterLink)
   }
 
   public async clickOnBlogLink(): Promise<void> {
-    await this.clickElement(await this.blogLink)
+    await super.clickElement(await this.blogLink)
   }
   public async clickOnCustomerStoriesLink(): Promise<void> {
-    await this.clickElement(await this.customerStories)
+    await super.clickElement(await this.customerStories)
   }
 
   public async clickOnPricingGlobalNumbersLink(): Promise<void> {
-    await this.clickElement(await this.pricingGlobalNumbersLink)
+    await super.clickElement(await this.pricingGlobalNumbersLink)
   }
 
   public async clickOnIntegrationsLink(): Promise<void> {
-    await this.clickElement(await this.integrationsLink)
+    await super.clickElement(await this.integrationsLink)
   }
 
   public async clickOnMicrosoftTeamsLink(): Promise<void> {
-    await this.clickElement(await this.microsoftTeamsLink)
+    await super.clickElement(await this.microsoftTeamsLink)
   }
 
   public async clickOnIoTSimCardsLink(): Promise<void> {
-    await this.clickElement(await this.ioTSimCardsLink)
+    await super.clickElement(await this.ioTSimCardsLink)
   }
 
   public async clickOnReleaseNotesLink(): Promise<void> {
-    await this.clickElement(await this.releaseNotesLink)
+    await super.clickElement(await this.releaseNotesLink)
   }
   public async clickOnTelnyxVsTwilioLink(): Promise<void> {
-    await this.clickElement(await this.telnyxVsTwilioLink)
+    await super.clickElement(await this.telnyxVsTwilioLink)
   }
 }
 

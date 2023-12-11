@@ -66,23 +66,23 @@ class TelnyxVsTwilioPage extends Page {
   }
 
   public async clickOnNumberTypeOption() {
-    await this.clickElement(await this.numberTypeOption)
+    await super.clickElement(await this.numberTypeOption)
   }
 
   public async clickOnSendMessagesOption() {
-    await this.clickElement(await this.sendMessagesOption)
+    await super.clickElement(await this.sendMessagesOption)
   }
 
   public async clickOnReceiveMessagesOption() {
-    await this.clickElement(await this.receiveMessagesOption)
+    await super.clickElement(await this.receiveMessagesOption)
   }
 
   public async clickOnNextBtn() {
-    await this.clickElement(await this.nextBtn)
+    await super.clickElement(await this.nextBtn)
   }
 
   public async clickOnCalculateSavingsBtn() {
-    await this.clickElement(await this.calculateSavingsBtn)
+    await super.clickElement(await this.calculateSavingsBtn)
   }
 }
 

@@ -38,11 +38,11 @@ class SolutionsPage extends Page {
   }
 
   public async clickOnSeeUseCasesLink() {
-    await this.clickElement(await this.seeUseCasesLink)
+    await super.clickElement(await this.seeUseCasesLink)
   }
 
   public async clickOnFilterDropdownBtn() {
-    await this.clickElement(await this.filterDropdownBtn)
+    await super.clickElement(await this.filterDropdownBtn)
   }
 }
 

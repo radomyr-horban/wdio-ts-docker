@@ -1,7 +1,6 @@
 import Page from './page.js'
 
 class IoTSimCardsPage extends Page {
-
   public get heading() {
     return $('main h1')
   }
@@ -70,24 +69,24 @@ class IoTSimCardsPage extends Page {
   }
 
   public async clickOnNumberOfSimCardsInput() {
-    await this.clickElement(await this.numberOfSimCardsInput)
+    await super.clickElement(await this.numberOfSimCardsInput)
   }
 
   public async clickOnUsePublicIPOption() {
-    await this.clickElement(await this.usePublicIPOption)
+    await super.clickElement(await this.usePublicIPOption)
   }
 
   public async clickOnDataUsageInput() {
-    await this.clickElement(await this.dataUsageInput)
+    await super.clickElement(await this.dataUsageInput)
   }
 
   public async clickOnSelectCountryInput() {
     await (await this.selectCountryInput).waitForDisplayed()
-    await this.clickElement(await this.selectCountryInput)
+    await super.clickElement(await this.selectCountryInput)
   }
 
   public async clickOnNextBtn() {
-    await this.clickElement(await this.nextBtn)
+    await super.clickElement(await this.nextBtn)
   }
 
   public async setNumberOfSimCardsInput(value: number) {
@@ -100,7 +99,7 @@ class IoTSimCardsPage extends Page {
 
   public async setCountryOption(value: string) {
     const countryOption = await $(`//div[@role="option"]/span[@class="c-PJLV c-ihLeEO" and text()='${value}']`)
-    await this.clickElement(countryOption)
+    await super.clickElement(countryOption)
   }
 }
 

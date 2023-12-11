@@ -33,19 +33,19 @@ class MicrosoftTeamsPage extends Page {
   }
 
   public async setFirstNameInput(value: string) {
-    await this.setInputValue(await this.firstNameInput, value)
+    await super.setInputValue(await this.firstNameInput, value)
   }
 
   public async setLastNameInput(value: string) {
-    await this.setInputValue(await this.lastNameInput, value)
+    await super.setInputValue(await this.lastNameInput, value)
   }
 
   public async setEmailInput(value: string) {
-    await this.setInputValue(await this.emailInput, value)
+    await super.setInputValue(await this.emailInput, value)
   }
 
   public async setCompanyWebsiteInput(value: string) {
-    await this.setInputValue(await this.companyWebsiteInput, value)
+    await super.setInputValue(await this.companyWebsiteInput, value)
   }
 
   public get heading() {
@@ -77,7 +77,7 @@ class MicrosoftTeamsPage extends Page {
   }
 
   public async clickOnSubmitBtn(): Promise<void> {
-    await this.clickElement(await this.submitBtn)
+    await super.clickElement(await this.submitBtn)
   }
 
   public async selectOperator(value: string) {

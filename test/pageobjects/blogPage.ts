@@ -81,23 +81,23 @@ class BlogPage extends Page {
   }
 
   public async setSearchInput(value: string): Promise<void> {
-    await this.setInputValue(await this.searchInput, value)
+    await super.setInputValue(await this.searchInput, value)
   }
 
   public async clickOnFirstProductFilterOption(): Promise<void> {
-    await this.clickElement(await this.firstProductFilterOption)
+    await super.clickElement(await this.firstProductFilterOption)
   }
 
   public async clickOnFirstContentTypeFilterOption(): Promise<void> {
-    await this.clickElement(await this.firstContentTypeFilterOption)
+    await super.clickElement(await this.firstContentTypeFilterOption)
   }
 
   public async clickOnNextPageBtn(): Promise<void> {
-    await this.clickElement(await this.nextPageBtn)
+    await super.clickElement(await this.nextPageBtn)
   }
 
   public async clickOnFirstArticle(): Promise<void> {
-    await this.clickElement(await this.firstArticleLink)
+    await super.clickElement(await this.firstArticleLink)
   }
 }
 
